@@ -1,23 +1,21 @@
-import logo from './logo.svg';
+import React,{useState} from 'react';
 import './App.css';
+import ReactMarkdown from 'react-markdown'
 
 function App() {
+
+  const handleChange=(e)=>{
+setText(e.target.value)
+  }
+
+  const [text,setText]=useState("#sup")
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <textarea value={text} onChange={handleChange}/>
+
+      {/* <div className="preview" dangerouslySetInnerHTML={{__html: marked(text)}}/> */}
+
+      <ReactMarkdown className='preview' source={text}/>
     </div>
   );
 }
